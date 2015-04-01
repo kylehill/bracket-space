@@ -34,7 +34,14 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
-  }
+  },
+
+  "get /t/:shortUrl": "TournamentController.read",
+
+  "post /create": "TournamentController.create",
+  "post /create/single": "SingleEliminationController.create",
+
+  "post /result/:shortUrl": "TournamentController.result"
 
   /***************************************************************************
   *                                                                          *
