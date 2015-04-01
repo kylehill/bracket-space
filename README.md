@@ -12,6 +12,7 @@ It's a node app that runs on [Sails](http://www.sailsjs.org), which is awesome. 
 
 **Queued**:
 
+* Actually make it with Mongo so we can persist data lol
 * MVP data intake
 * MVP bracket display
 * Double-elim format
