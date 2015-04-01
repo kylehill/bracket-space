@@ -18,6 +18,7 @@ It's a node app that runs on [Sails](http://www.sailsjs.org), which is awesome. 
 * Double-elim format
 * Round-robin format
 * Group stage -> single-elim format (World Cup)
-* E-mail link authentication for writes
+* Socket.io push results
+* Email link authentication for writes
 * Slug configuration
 * Self-service registration
