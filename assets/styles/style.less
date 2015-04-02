@@ -16,3 +16,177 @@
 
   
 }
+
+@font-size: 14px;
+@base-row-size: 1.5em;
+@border: solid 1px blue;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.bracket {
+  width: 90%;
+  margin: 0px auto;
+  
+  * {
+    font-size: @font-size;
+  }
+  
+  &.rounds3 .round {
+    width: (100% / 3);
+    
+    &.winner {
+      margin-left: -1 * (100% / 3);
+    }
+  }
+  &.rounds4 .round {
+    width: (100% / 4);
+    
+    &.winner {
+      margin-left: -1 * (100% / 4);
+    }
+  }
+  &.rounds5 .round {
+    width: (100% / 5);
+    
+    &.winner {
+      margin-left: -1 * (100% / 5);
+    }
+  }
+  &.rounds6 .round {
+    width: (100% / 6);
+    
+    &.winner {
+      margin-left: -1 * (100% / 6);
+    }
+  }
+  
+  .round {
+    float: left;
+    vertical-align: top;
+    
+    &.round1 {
+      @row-size: @base-row-size * 1;
+      margin-top: ((@base-row-size - @row-size) / 2);
+      
+      .blank {
+        min-height: @row-size * 2;
+        max-height: @row-size * 2;
+      }
+      .player {
+        min-height: @row-size;
+        max-height: @row-size;
+        padding-top: @row-size - 1em;
+      }
+    }
+    &.round2 {
+      @row-size: @base-row-size * 2;
+      margin-top: ((@base-row-size - @row-size) / 2);
+      
+      .blank {
+        min-height: @row-size * 2;
+        max-height: @row-size * 2;
+      }
+      .player {
+        min-height: @row-size;
+        max-height: @row-size;
+        padding-top: @row-size - 1em;
+      }
+    }
+    &.round3 {
+      @row-size: @base-row-size * 4;
+      margin-top: ((@base-row-size - @row-size) / 2);
+      
+      .player {
+        min-height: @row-size;
+        max-height: @row-size;
+        padding-top: @row-size - 1em;
+      }
+    }
+    &.round4 {
+      @row-size: @base-row-size * 8;
+      margin-top: ((@base-row-size - @row-size) / 2);
+      
+      .player {
+        min-height: @row-size;
+        max-height: @row-size;
+        padding-top: @row-size - 1em;
+      }
+    }
+    &.round5 {
+      @row-size: @base-row-size * 16;
+      margin-top: ((@base-row-size - @row-size) / 2);
+      
+      .player {
+        min-height: @row-size;
+        max-height: @row-size;
+        padding-top: @row-size - 1em;
+      }
+    }
+    &.round6 {
+      @row-size: @base-row-size * 32;
+      margin-top: ((@base-row-size - @row-size) / 2);
+      
+      .player {
+        min-height: @row-size;
+        max-height: @row-size;
+        padding-top: @row-size - 1em;
+      }
+    }
+    &.round7 {
+      @row-size: @base-row-size * 64;
+      margin-top: ((@base-row-size - @row-size) / 2);
+      
+      .player {
+        min-height: @row-size;
+        max-height: @row-size;
+        padding-top: @row-size - 1em;
+      }
+    }
+    
+    &.winner {
+      .player {
+        text-align: right;
+        &:last-of-type {
+          border-right: none;
+        }
+      }
+    }
+    
+    .game {
+      line-height: @font-size * 0.9;        
+    }
+    
+    .player {
+      border-bottom: @border;
+      padding-left: 3%;
+      white-space: nowrap;
+      overflow: hidden;
+      
+      &:last-of-type {
+        border-right: @border;
+      }
+      
+      &[data-winner] {
+        color: forestgreen;
+        
+        &::before {
+          content: "\2713 ";
+          padding-right: 3%;
+        }
+      }
+      
+      &[data-score] {
+        &::after {
+          content: attr(data-score);
+          float: right;
+          padding-right: 3%;
+        }
+      }
+    }
+    
+  }
+}

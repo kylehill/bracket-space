@@ -1,56 +1,27 @@
-var app = angular.module("bracketApp", [])
+var app = angular.module("bracketApp", ["ui.router", "landingCtrl", "bracketCtrl", "inputCtrl"])
 
-app.controller("InputController", [ "$scope", "$http", "$timeout", function($scope, $http, $timeout){
+app.config([ "$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider){
 
-  $scope.participants = [
-    { name: "" },
-  ];
+  $urlRouterProvider.otherwise("/");
 
-  $scope.keyupRow = function($event, text, index) {
-
-    switch ($event.which) {
-      case 38: // up
-        $(".full-row:eq(" + (index - 1) + ") input").focus()
-        return
-      case 40: // down
-      case 13: // enter
-        $(".full-row:eq(" + (index + 1) + ") input").focus()
-        return
-    }
-
-    if (text === "") {
-      if ((index + 1) < $scope.participants.length) {
-        $scope.participants.splice(index, 1)
-        $(".full-row:last input").focus()
+  $stateProvider
+    .state("landing", {
+      url: "/",
+      views: {
+        main: { templateUrl: "/partials/landing.html" }
       }
-      return
-    }
-
-    if (index === $scope.participants.length - 1) {
-      $scope.participants.push({ name: "" })
-    }
-
-  }
-
-  $scope.createClick = function() {
-    var participants = $scope.participants.reduce(function(mem, i){
-      if (i.name) {
-        mem.push(i.name)
+    })
+    .state("input", {
+      views: {
+        main: { templateUrl: "/partials/input.html" }
       }
+    })
+    .state("bracket", {
+      url: "/:bracket",
+      views: {
+        main: { templateUrl: "/partials/bracket.html" }
+      }
+    })
 
-      return mem
-    }, [])
+}])
 
-    if (participants.length < 2) {
-      return
-    }
-
-    $http.post("/create", {
-      participants: participants,
-      title: "Sample Tournament",
-      type: "single"
-    }).success(function(data){ console.log(data) })
-  }
-
-
-}]);

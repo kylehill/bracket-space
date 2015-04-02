@@ -1,0 +1,39 @@
+<div class="tournament" ng-controller="BracketController">
+
+  <div class="phase" ng-repeat="phase in data.phases">
+    <div class="phase-title" ng-bind="phase.title"></div>
+
+    
+    <div class="bracket" ng-class="'rounds' + (phase.rounds.length)" ng-show="phase.config.type === 'bracket'">
+      <div class="round" ng-class="'round' + round.round" ng-repeat="round in phase.rounds">
+        
+        <div ng-repeat="game in round.games">
+          <div class="blank" ng-if="game.bye"></div>
+          <div ng-if="!game.bye" class="game" data-game="{{ 'Game' + game.id }}">
+            <div class="player" 
+              ng-class="{ winner: game.result === 'home' }"
+              ng-click="clickPlayer(game, 'home')">
+              {{ participants[game.home] }}
+            </div>
+            <div class="player"
+              ng-class="{ winner: game.result === 'away' }"
+              ng-click="clickPlayer(game, 'away')">
+              {{ participants[game.away] }}
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="round winner" ng-class="'round' + (phase.rounds.length + 1)">
+        <div class="player">{{ participants[phase.winner] }}</div>
+      </div>
+    </div>
+
+    <div class="groups" ng-show="phase.config.type === 'groups'">
+
+    </div>
+
+  </div>
+
+</div>
