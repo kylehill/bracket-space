@@ -29,13 +29,13 @@ module.exports.connections = {
   * Run: npm install sails-mongo                                             *
   *                                                                          *
   ***************************************************************************/
-  localMongo: {
+  local: {
     adapter: 'sails-mongo',
     host: 'localhost',
     port: 27017
   },
 
-  productionMongo: {
+  production: {
     adapter: 'sails-mongo',
     url: process.env.MONGOLAB_URI
   }
