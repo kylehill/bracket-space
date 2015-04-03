@@ -21,10 +21,6 @@
 
 module.exports.connections = {
 
-  localDiskDb: {
-    adapter: 'sails-disk'
-  },
-
   /***************************************************************************
   *                                                                          *
   * MongoDB is the leading NoSQL database.                                   *
