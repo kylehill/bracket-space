@@ -37,8 +37,7 @@ module.exports.connections = {
 
   production: {
     adapter: 'sails-mongo',
-    url: process.env.MONGOLAB_URI
-  }
+    host: process.env.MONGOLAB_URI
+  },
 
-  
 };
