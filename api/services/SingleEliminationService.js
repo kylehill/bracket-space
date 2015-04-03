@@ -99,6 +99,10 @@ module.exports = {
               }
             }
 
+            if (match.final) {
+              phase.winner = (result === "home" ? match.home : match.away)
+            }
+
             break
           
           default:
@@ -121,6 +125,10 @@ module.exports = {
 
             if (match.loser_to) {
               phase = this.setResult(phase, match.loser_to, result, id)
+            }
+
+            if (match.final) {
+              delete phase.winner
             }
         }
       }
@@ -232,6 +240,11 @@ module.exports = {
         queue.push(match)
 
         gameCounter++
+      }
+
+      var last = _.last(matches)
+      if (last) {
+        last.final = true
       }
 
       return matches

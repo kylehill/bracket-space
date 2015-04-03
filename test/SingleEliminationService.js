@@ -21,7 +21,7 @@ describe("SingleEliminationService", function(){
           { round: 1, id: 3, home: 3, away: 6, winner_to: 5 },
           { round: 2, id: 4, home: 1, away_from: 1, winner_to: 6 },
           { round: 2, id: 5, home_from: 2, away_from: 3, winner_to: 6 },
-          { round: 3, id: 6, home_from: 4, away_from: 5 }
+          { round: 3, id: 6, home_from: 4, away_from: 5, final: true }
         ],
         "check flatten")
 
@@ -35,7 +35,7 @@ describe("SingleEliminationService", function(){
           { round: 1, id: 3, home: 3, away: 6, winner_to: 5 },
           { round: 2, id: 4, home: 1, away_from: 1, winner_to: 6 },
           { round: 2, id: 5, home_from: 2, away_from: 3, winner_to: 6 },
-          { round: 3, id: 6, home_from: 4, away_from: 5 }
+          { round: 3, id: 6, home_from: 4, away_from: 5, final: true }
         ],
         "check reference")
     })
@@ -68,7 +68,7 @@ describe("SingleEliminationService", function(){
             title: "Round 3",
             round: 3,
             games: [
-              { home_from: 4, away_from: 5, id: 6, round: 3 }
+              { home_from: 4, away_from: 5, id: 6, round: 3, final: true }
             ]
           }
         ],
@@ -101,7 +101,7 @@ describe("SingleEliminationService", function(){
               title: "Round 3",
               round: 3,
               games: [
-                { home_from: 4, away_from: 5, id: 6, round: 3 }
+                { home_from: 4, away_from: 5, id: 6, round: 3, final: true }
               ]
             }
           ],
@@ -153,7 +153,7 @@ describe("SingleEliminationService", function(){
               title: "Round 3",
               round: 3,
               games: [
-                { home_from: 4, away_from: 5, id: 6, round: 3 }
+                { home_from: 4, away_from: 5, id: 6, round: 3, final: true }
               ]
             }
           ]
@@ -207,7 +207,7 @@ describe("SingleEliminationService", function(){
               title: "Round 3",
               round: 3,
               games: [
-                { home_from: 4, away_from: 5, id: 6, round: 3 }
+                { home_from: 4, away_from: 5, id: 6, round: 3, final: true }
               ]
             }
           ]
@@ -261,7 +261,7 @@ describe("SingleEliminationService", function(){
               title: "Round 3",
               round: 3,
               games: [
-                { home_from: 4, away_from: 5, id: 6, round: 3 }
+                { home_from: 4, away_from: 5, id: 6, round: 3, final: true }
               ]
             }
           ]
@@ -318,7 +318,7 @@ describe("SingleEliminationService", function(){
               title: "Round 3",
               round: 3,
               games: [
-                { home_from: 4, home: 1, away_from: 5, id: 6, round: 3 }
+                { home_from: 4, home: 1, away_from: 5, id: 6, round: 3, final: true }
               ]
             }
           ]
@@ -369,7 +369,7 @@ describe("SingleEliminationService", function(){
               title: "Round 3",
               round: 3,
               games: [
-                { home_from: 4, away_from: 5, id: 6, round: 3 }
+                { home_from: 4, away_from: 5, id: 6, round: 3, final: true }
               ]
             }
           ]
@@ -427,7 +427,7 @@ describe("SingleEliminationService", function(){
               title: "Round 3",
               round: 3,
               games: [
-                { home_from: 4, home: 1, away_from: 5, id: 6, round: 3 }
+                { home_from: 4, home: 1, away_from: 5, id: 6, round: 3, final: true }
               ]
             }
           ]
@@ -479,7 +479,7 @@ describe("SingleEliminationService", function(){
               title: "Round 3",
               round: 3,
               games: [
-                { home_from: 4, away_from: 5, id: 6, round: 3 }
+                { home_from: 4, away_from: 5, id: 6, round: 3, final: true }
               ]
             }
           ]
@@ -555,7 +555,7 @@ describe("SingleEliminationService", function(){
         [
           { round: 1, id: 1, home: 1, away: 4, winner_to: 3 },
           { round: 1, id: 2, home: 2, away: 3, winner_to: 3 },
-          { round: 2, id: 3, home_from: 1, away_from: 2 }
+          { round: 2, id: 3, home_from: 1, away_from: 2, final: true }
         ],
         "checks 4-entrant bracket")
 
@@ -568,7 +568,7 @@ describe("SingleEliminationService", function(){
           { round: 1, id: 2, home: 3, away: 6, winner_to: 4 },
           { round: 2, id: 3, home: 1, away_from: 1, winner_to: 5 },
           { round: 2, id: 4, home: 2, away_from: 2, winner_to: 5 },
-          { round: 3, id: 5, home_from: 3, away_from: 4 }
+          { round: 3, id: 5, home_from: 3, away_from: 4, final: true }
         ],
         "checks 6-entrant bracket")
 
@@ -612,7 +612,7 @@ describe("SingleEliminationService", function(){
               title: "Round 2",
               round: 2,
               games: [
-                { home_from: 1, away_from: 2, id: 3, round: 2 }
+                { home_from: 1, away_from: 2, id: 3, round: 2, final: true }
               ]
             }
           ]
@@ -666,7 +666,7 @@ describe("SingleEliminationService", function(){
               title: "Round 3",
               round: 3,
               games: [
-                { home_from: 3, away_from: 4, id: 5, round: 3 }
+                { home_from: 3, away_from: 4, id: 5, round: 3, final: true }
               ]
             }
           ]

@@ -5,6 +5,9 @@ angular.module("inputCtrl", [])
     { name: "" },
   ];
 
+  $scope.shuffle = true
+  $scope.title = "Sample Tournament"
+
   $scope.keyupRow = function($event, text, index) {
 
     switch ($event.which) {
@@ -46,7 +49,8 @@ angular.module("inputCtrl", [])
 
     $http.post("/create", {
       participants: participants,
-      title: "Sample Tournament",
+      title: $scope.title,
+      shuffle: $scope.shuffle,
       type: "single"
     }).success(function(data){
       $state.go("bracket", { bracket: data.shortUrl })

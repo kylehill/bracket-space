@@ -1,8 +1,9 @@
 <div class="tournament" ng-controller="BracketController">
 
+  <div class="tournament-title" ng-bind="data.title"></div> 
+
   <div class="phase" ng-repeat="phase in data.phases">
     <div class="phase-title" ng-bind="phase.title"></div>
-
     
     <div class="bracket" ng-class="'rounds' + (phase.rounds.length)" ng-show="phase.config.type === 'bracket'">
       <div class="round" ng-class="'round' + round.round" ng-repeat="round in phase.rounds">
@@ -25,7 +26,7 @@
 
       </div>
 
-      <div class="round winner" ng-class="'round' + (phase.rounds.length + 1)">
+      <div ng-show="phase.winner" class="round champion" ng-class="'round' + (phase.rounds.length + 1)">
         <div class="player">{{ participants[phase.winner] }}</div>
       </div>
     </div>

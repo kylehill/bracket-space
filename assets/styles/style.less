@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 .row {
@@ -17,15 +18,9 @@
   
 }
 
-@font-size: 14px;
-@base-row-size: 1.5em;
+@font-size: 16px;
+@base-row-size: 1.8em;
 @border: solid 1px blue;
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
 
 .bracket {
   width: 90%;
@@ -38,28 +33,28 @@
   &.rounds3 .round {
     width: (100% / 3);
     
-    &.winner {
+    &.champion {
       margin-left: -1 * (100% / 3);
     }
   }
   &.rounds4 .round {
     width: (100% / 4);
     
-    &.winner {
+    &.champion {
       margin-left: -1 * (100% / 4);
     }
   }
   &.rounds5 .round {
     width: (100% / 5);
     
-    &.winner {
+    &.champion {
       margin-left: -1 * (100% / 5);
     }
   }
   &.rounds6 .round {
     width: (100% / 6);
     
-    &.winner {
+    &.champion {
       margin-left: -1 * (100% / 6);
     }
   }
@@ -147,9 +142,12 @@
       }
     }
     
-    &.winner {
+    &.champion {
       .player {
         text-align: right;
+        padding-right: 3%;
+        font-weight: bold;
+        z-index: 1;
         &:last-of-type {
           border-right: none;
         }
@@ -165,18 +163,16 @@
       padding-left: 3%;
       white-space: nowrap;
       overflow: hidden;
-      
+      position: relative;
+      z-index: 2;
+
       &:last-of-type {
         border-right: @border;
       }
       
-      &[data-winner] {
+      &.winner {
         color: forestgreen;
-        
-        &::before {
-          content: "\2713 ";
-          padding-right: 3%;
-        }
+        font-weight: bold;
       }
       
       &[data-score] {
