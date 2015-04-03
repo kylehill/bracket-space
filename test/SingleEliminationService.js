@@ -378,12 +378,124 @@ describe("SingleEliminationService", function(){
 
     })
 
+
+    it("private.setResult - recursive defined", function(){
+
+      SingleEliminationService.private.setResult(t.phases[0], 1, "home", 10, 5)
+      SingleEliminationService.private.setResult(t.phases[0], 4, "home", 10, 7)
+
+      assert.deepEqual(
+        t.phases[0],
+        {
+          config: {
+            track_score: false,
+            type: "bracket"
+          },
+          phase: 1,
+          state: "open",
+          title: "Bracket",
+          controller: "SingleElimBracketController",
+          participants: [
+            { name: "A", id: 1 },
+            { name: "B", id: 2 },
+            { name: "C", id: 3 },
+            { name: "D", id: 4 },
+            { name: "E", id: 5 },
+            { name: "F", id: 6 },
+            { name: "G", id: 7 }
+          ],
+          rounds: [
+            {
+              title: "Round 1",
+              round: 1,
+              games: [
+                { round: 1, bye: true },
+                { home: 4, away: 5, id: 1, round: 1, winner_to: 4, home_score: 10, away_score: 5, result: "home" },
+                { round: 1, home: 2, away: 7, id: 2, winner_to: 5 },
+                { home: 3, away: 6, id: 3, round: 1, winner_to: 5 }
+              ]
+            },
+            {
+              title: "Round 2",
+              round: 2,
+              games: [
+                { home: 1, away_from: 1, away: 4, id: 4, round: 2, winner_to: 6, home_score: 10, away_score: 7, result: "home" },
+                { home_from: 2, away_from: 3, id: 5, round: 2, winner_to: 6 }
+              ]
+            },
+            {
+              title: "Round 3",
+              round: 3,
+              games: [
+                { home_from: 4, home: 1, away_from: 5, id: 6, round: 3 }
+              ]
+            }
+          ]
+        },
+        "sets several results")
+
+      SingleEliminationService.private.setResult(t.phases[0], 1, "away", 10, 15)
+      
+      assert.deepEqual(
+        t.phases[0],
+        {
+          config: {
+            track_score: false,
+            type: "bracket"
+          },
+          phase: 1,
+          state: "open",
+          title: "Bracket",
+          controller: "SingleElimBracketController",
+          participants: [
+            { name: "A", id: 1 },
+            { name: "B", id: 2 },
+            { name: "C", id: 3 },
+            { name: "D", id: 4 },
+            { name: "E", id: 5 },
+            { name: "F", id: 6 },
+            { name: "G", id: 7 }
+          ],
+          rounds: [
+            {
+              title: "Round 1",
+              round: 1,
+              games: [
+                { round: 1, bye: true },
+                { home: 4, away: 5, id: 1, round: 1, winner_to: 4, home_score: 10, away_score: 15, result: "away" },
+                { round: 1, home: 2, away: 7, id: 2, winner_to: 5 },
+                { home: 3, away: 6, id: 3, round: 1, winner_to: 5 }
+              ]
+            },
+            {
+              title: "Round 2",
+              round: 2,
+              games: [
+                { home: 1, away_from: 1, away: 5, id: 4, round: 2, winner_to: 6 },
+                { home_from: 2, away_from: 3, id: 5, round: 2, winner_to: 6 }
+              ]
+            },
+            {
+              title: "Round 3",
+              round: 3,
+              games: [
+                { home_from: 4, away_from: 5, id: 6, round: 3 }
+              ]
+            }
+          ]
+        },
+        "recursively removes results")
+
+    })    
+
     it("result", function(){
 
 
     })
 
   })
+
+
 
   describe("Pairing", function(){
 

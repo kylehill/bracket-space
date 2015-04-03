@@ -55,11 +55,22 @@ module.exports = {
                 return m.id === match.winner_to
               })
 
+              delete next.result
+              delete next.away_score
+              delete next.home_score
+
               if (next.home_from === id) {
                 next.home = winner
               }
               if (next.away_from === id) {
                 next.away = winner
+              }
+
+              if (next.winner_to) {
+                phase = this.setResult(phase, next.winner_to, "", next.id)
+              }
+              if (next.loser_to) {
+                phase = this.setResult(phase, next.loser_to, "", next.id) 
               }
             }
 
@@ -69,11 +80,22 @@ module.exports = {
                 return m.id === match.loser_to
               })
 
+              delete next.result
+              delete next.away_score
+              delete next.home_score
+
               if (next.home_from === match.id) {
                 next.home = loser
               }
               if (next.away_from === match.id) {
                 next.away = loser
+              }
+
+              if (next.winner_to) {
+                phase = this.setResult(phase, next.winner_to, "", next.id)
+              }
+              if (next.loser_to) {
+                phase = this.setResult(phase, next.loser_to, "", next.id) 
               }
             }
 
