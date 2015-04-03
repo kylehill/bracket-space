@@ -35,9 +35,9 @@ module.exports.connections = {
     port: 27017
   },
 
-  production: {
+  mongolab: {
     adapter: 'sails-mongo',
-    host: process.env.MONGOLAB_URI
+    url: process.env.MONGOLAB_URI
   },
 
 };
