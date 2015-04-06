@@ -5,13 +5,15 @@ app.config([ "$stateProvider", "$urlRouterProvider", function($stateProvider, $u
   $urlRouterProvider.otherwise("/");
 
   $stateProvider
-    .state("landing", {
+    /*.state("landing", {
       url: "/",
       views: {
         main: { templateUrl: "/partials/landing.html" }
       }
     })
+    */
     .state("input", {
+      url: "/",
       views: {
         main: { templateUrl: "/partials/input.html" }
       }

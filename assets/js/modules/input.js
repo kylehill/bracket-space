@@ -5,6 +5,7 @@ angular.module("inputCtrl", [])
     { name: "" },
   ];
 
+  $scope.format = "single"
   $scope.shuffle = true
   $scope.title = "Sample Tournament"
 
@@ -55,6 +56,11 @@ angular.module("inputCtrl", [])
     }).success(function(data){
       $state.go("bracket", { bracket: data.shortUrl })
     })
+  }
+
+  $scope.paste = function($event) {
+    var pasted = ($event.clipboardData.getData("text/plain").split("\n"))
+    
   }
 
 

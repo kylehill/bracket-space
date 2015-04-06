@@ -1,3 +1,9 @@
+@font-size: 16px;
+@base-row-size: 1.8em;
+@border: solid 1px blue;
+@seed-color: rgb(166, 47, 32);
+@button-color: rgb(54, 135, 22);
+
 * {
   margin: 0;
   padding: 0;
@@ -6,21 +12,97 @@
   font-family: Helvetica, Arial, sans-serif;
 }
 
-.row {
+.input {
+  font-size: 0px;
 
-  .index {
+  .rows {
+    width: 50%;
     display: inline-block;
-    width: 100px;
-    padding: 10px;
-    text-align: right;
+    height: 100vh;
+    padding: 10vh 2%;
+    border-right: solid 1px #333;
   }
 
-  
-}
+  .controls {
+    width: 50%;
+    font-size: 16px;
+    display: inline-block;
+    vertical-align: top;
+    padding: 10vh 2%;
+  }
 
-@font-size: 16px;
-@base-row-size: 1.8em;
-@border: solid 1px blue;
+  .control-row {
+    margin-bottom: 20px;
+
+    .control-label {
+      font-weight: bold;
+    }
+
+    .control-full {
+      width: 100%;
+      display: block;
+      font-size: 20px;
+      margin-top: 5px;
+      padding: 5px;
+    }
+
+    .control-aside {
+      width: 15px;
+      height: 15px;
+      margin-right: 5px;
+    }
+
+    .control-button {
+      color: white;
+      padding: 8px 16px;
+      background: @button-color;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      border-top: solid 1px lighten(@button-color, 10%);
+      border-left: solid 1px lighten(@button-color, 10%);
+      border-bottom: solid 1px darken(@button-color, 10%);
+      border-right: solid 1px darken(@button-color, 10%);
+    }
+  }
+
+  .row {
+    .seed {
+      display: inline-block;
+      width: 20%;
+      text-align: right;
+      color: white;
+      font-weight: bold;
+      background: @seed-color;
+      padding: 5px;
+      font-size: 18px;
+      border-top: solid 1px lighten(@seed-color, 10%);
+      border-left: solid 1px lighten(@seed-color, 10%);
+      border-bottom: solid 1px darken(@seed-color, 10%);
+      border-right: solid 1px darken(@seed-color, 10%);
+    }
+
+    &:first-of-type .entry {
+      border-top: solid 1px #999;
+    }
+
+    .entry {
+      width: 80%;
+      border: none;
+      border-bottom: solid 1px #999;
+      border-right: solid 1px #999;
+      padding: 5px;
+      padding-left: none;
+      font-size: 18px;
+
+      &:focus {
+        outline: none;
+        background: rgb(237, 246, 255);
+      }
+    }
+  }
+}
 
 .bracket {
   width: 90%;

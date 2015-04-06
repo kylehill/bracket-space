@@ -1,22 +1,44 @@
-<div ng-controller="InputController">
-  <div class="row full-row" ng-repeat="person in participants">
-    <div class="index" ng-bind="$index + 1"></div>
-    <input type="text" ng-model="person.name" ng-keyup="keyupRow($event, person.name, $index)" />
+<div class="input" ng-controller="InputController">
+  
+  <div class="rows">
+
+    <div class="row full-row" ng-repeat="person in participants">
+      <div class="seed" ng-bind="$index + 1"></div>
+      <input class="entry" type="text" 
+        ng-model="person.name" 
+        ng-keyup="keyupRow($event, person.name, $index)"
+        ng-paste="paste($event)" />
+    </div>
+
   </div>
 
-  <div>
-    <label>
-      Tournament Name
-      <input type="text" ng-model="title" />
-    </label>
-  </div>
+  <div class="controls">
+    <div class="control-row">
+      <label class="control-label">
+        Tournament Name
+        <input class="control-full" type="text" ng-model="title" />
+      </label>
+    </div>
 
-  <div>
-    <label>
-      <input type="checkbox" ng-model="shuffle" />
-      Randomize Seeds?
-    </label>
-  </div>
+    <div class="control-row">
+      <label class="control-label">
+        Tournament Format
+        <select class="control-full" ng-model="format">
+          <option value="single">Single Elimination</option>
+        </select>
+      </label>
+    </div>
 
-  <button ng-click="createClick()">Create Tournament</button>
+    <div class="control-row">
+      <label class="control-label">
+        <input class="control-aside" type="checkbox" ng-model="shuffle" />
+        Randomize Seeds
+      </label>
+    </div>
+
+    <div class="control-row">
+      <button class="control-button" ng-click="createClick()">Create Tournament</button>
+    </div>
+    
+  </div>
 </div>
