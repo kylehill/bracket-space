@@ -1,4 +1,6 @@
 @unit: 12px;
+@font-size: @unit * (4 / 3);
+@large-font-size: @unit * (5 / 3);
 @seed-color: rgb(200, 200, 200);
 @seed-color-winner: rgb(54, 135, 22);
 @button-color: rgb(54, 135, 22);
@@ -21,13 +23,13 @@
 
   .game-title {
     padding: (@unit / 2) @unit;
-    font-size: 20px;
+    font-size: @large-font-size;
   }
 
   .result-player {
     height: @unit * 4;
     line-height: @unit * 4;
-    font-size: 20px;
+    font-size: @large-font-size;
   }
 
   .indicator {
@@ -57,7 +59,7 @@
     vertical-align: top;
 
     input {
-      font-size: 20px;
+      font-size: @large-font-size;
       width: 100%;
       padding: 5px;
       border: solid 1px black;
@@ -78,7 +80,7 @@
       padding: 8px 16px;
       background: @button-color;
       border-radius: 4px;
-      font-size: 16px;
+      font-size: @font-size;
       font-weight: bold;
       cursor: pointer;
       border-top: solid 1px lighten(@button-color, 10%);
@@ -134,7 +136,7 @@
 
   .game-container {
     height: @unit * 6;
-    font-size: 16px;
+    font-size: @font-size;
     position: relative;
     
     &:nth-child(even) {
@@ -202,7 +204,7 @@
         width: 20%;
         height: @unit * 2.5;
         display: inline-block;
-        font-size: 16px;
+        font-size: @font-size;
         text-align: right;
         color: white;
         font-weight: bold;
@@ -220,7 +222,7 @@
         width: 80%;
         height: @unit * 2.5;
         display: inline-block;
-        font-size: 16px;
+        font-size: @font-size;
         padding: 0px 5px;
         border-top: solid 1px #999;
         vertical-align: top;
@@ -255,7 +257,7 @@
     .player {
       width: 50%;
       display: inline-block;
-      font-size: 16px;
+      font-size: @font-size;
 
       &:last-child {
         text-align: right;
@@ -278,6 +280,24 @@
   .round.activePlus3 {
     .game-container {
       height: @unit * 48;
+    }
+  }
+
+  .round.activePlus4 {
+    .game-container {
+      height: @unit * 96;
+    }
+  }
+
+  .round.activePlus5 {
+    .game-container {
+      height: @unit * 192;
+    }
+  }
+
+  .round.activePlus6 {
+    .game-container {
+      height: @unit * 384;
     }
   }
 

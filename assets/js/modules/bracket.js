@@ -53,7 +53,10 @@ angular.module("bracketCtrl",[])
     1: "active",
     2: "activePlus1",
     3: "activePlus2",
-    4: "activePlus3"
+    4: "activePlus3",
+    5: "activePlus4",
+    6: "activePlus5",
+    7: "activePlus6"
   }
 
   var tournamentId
