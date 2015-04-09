@@ -7,6 +7,7 @@ angular.module("inputCtrl", [])
 
   $scope.format = "single"
   $scope.shuffle = true
+  $scope.track_score = false
   $scope.title = "Sample Tournament"
 
   $scope.keyupRow = function($event, text, index) {
@@ -52,6 +53,7 @@ angular.module("inputCtrl", [])
       participants: participants,
       title: $scope.title,
       shuffle: $scope.shuffle,
+      track_score: $scope.track_score,
       type: "single"
     }).success(function(data){
       $state.go("bracket", { bracket: data.shortUrl })

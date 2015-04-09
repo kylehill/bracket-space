@@ -685,7 +685,9 @@ describe("SingleEliminationService", function(){
           title: "Foo"
         }),
         {
-          config: {},
+          config: {
+            track_score: true
+          },
           title: "Foo",
           service: "SingleEliminationService",
           participants: SingleEliminationService.private.mapEntries(["A", "B", "C", "D"]),
@@ -706,7 +708,9 @@ describe("SingleEliminationService", function(){
           title: "Bar"
         }),
         {
-          config: {},
+          config: {
+            track_score: true
+          },
           title: "Bar",
           service: "SingleEliminationService",
           participants: SingleEliminationService.private.mapEntries(["A", "B", "C", "D", "E", "F", "G", "H", "I"]),

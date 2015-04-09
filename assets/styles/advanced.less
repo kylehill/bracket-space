@@ -1,0 +1,288 @@
+@unit: 12px;
+@seed-color: rgb(200, 200, 200);
+@seed-color-winner: rgb(54, 135, 22);
+@button-color: rgb(54, 135, 22);
+
+.result-entry {
+  height: 0px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 400px;
+  transition: all 200ms;
+
+  &.show {
+    height: 200px;
+    border-top: solid 1px black;
+    border-left: solid 1px black;
+    background: white;
+    z-index: 1;
+  }
+
+  .game-title {
+    padding: (@unit / 2) @unit;
+    font-size: 20px;
+  }
+
+  .result-player {
+    height: @unit * 4;
+    line-height: @unit * 4;
+    font-size: 20px;
+  }
+
+  .indicator {
+    width: 10px;
+    border-radius: 10px;
+    height: @unit * 3;
+    display: inline-block;
+    vertical-align: top;
+    margin: (@unit / 2) 10px;
+
+    &.winner {
+      background: @seed-color-winner;
+    }
+  }
+
+  .name {
+    width: 250px;
+    display: inline-block;
+    vertical-align: top;
+    overflow-y: hidden;
+    white-space: nowrap;
+  }
+
+  .score {
+    width: 80px;
+    display: inline-block;
+    vertical-align: top;
+
+    input {
+      font-size: 20px;
+      width: 100%;
+      padding: 5px;
+      border: solid 1px black;
+
+      &:focus {
+        outline: none;
+        background: rgb(237, 246, 255);
+      }
+    }
+  }
+
+  .save-button {
+    text-align: right;
+    padding: 20px;
+
+    button {
+      color: white;
+      padding: 8px 16px;
+      background: @button-color;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      border-top: solid 1px lighten(@button-color, 10%);
+      border-left: solid 1px lighten(@button-color, 10%);
+      border-bottom: solid 1px darken(@button-color, 10%);
+      border-right: solid 1px darken(@button-color, 10%);
+    }
+  }
+}
+
+.bracket-advanced {
+
+  width: 90%;
+  margin: 5vh auto;
+  
+  &.rounds3 {
+    .round {
+      width: (100% / 3);
+    }
+  }
+  &.rounds4 {
+    .round {
+      width: (100% / 4);
+    }
+  }
+  &.rounds5 {
+    .round {
+      width: (100% / 5);
+    }
+  }
+  &.rounds6 {
+    .round {
+      width: (100% / 6);
+    }
+  }
+  &.rounds7 {
+    .round {
+      width: (100% / 7);
+    }
+  }
+
+  .round {
+    font-size: 0;
+    border-right: solid 1px black;
+    height: 100%;
+    display: inline-block;
+    vertical-align: top;
+
+    &:first-of-type {
+      border-left: solid 1px black;
+    }
+  }
+
+  .game-container {
+    height: @unit * 6;
+    font-size: 16px;
+    position: relative;
+    
+    &:nth-child(even) {
+      border-bottom: solid 1px black;
+    }
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .game {
+      height: @unit * 5;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgb(240, 240, 240);
+      margin: 0px 3%;
+    }
+
+    .player {
+      height: @unit * 2.5;
+      line-height: @unit * 2.5;
+      font-size: 0;
+      overflow-y: hidden;
+      white-space: nowrap;
+      position: relative;
+
+      &.winner {
+
+        .name {
+          font-weight: bold;
+        }
+
+        .seed {
+          background: @seed-color-winner;
+          border-top: solid 1px lighten(@seed-color-winner, 10%);
+          border-left: solid 1px lighten(@seed-color-winner, 10%);
+          border-bottom: solid 1px darken(@seed-color-winner, 10%);
+          border-right: solid 1px darken(@seed-color-winner, 10%);
+        }
+
+      }
+
+      &.empty {
+        .seed {
+          display: none;
+        }
+
+        .name {
+          width: 100%;
+          height: @unit * 2.5;
+        }
+      }
+
+      &:first-of-type {
+        .name {
+          border-top: none;
+        }
+
+        .score {
+          border-top: none;
+        }
+      } 
+
+      .seed {
+        width: 20%;
+        height: @unit * 2.5;
+        display: inline-block;
+        font-size: 16px;
+        text-align: right;
+        color: white;
+        font-weight: bold;
+        background: @seed-color;
+        padding: 0px 2px;
+        border-top: solid 1px lighten(@seed-color, 10%);
+        border-left: solid 1px lighten(@seed-color, 10%);
+        border-bottom: solid 1px darken(@seed-color, 10%);
+        border-right: solid 1px darken(@seed-color, 10%);
+        vertical-align: top;
+        min-width: 26px;
+      }
+
+      .name {
+        width: 80%;
+        height: @unit * 2.5;
+        display: inline-block;
+        font-size: 16px;
+        padding: 0px 5px;
+        border-top: solid 1px #999;
+        vertical-align: top;
+        overflow-y: hidden;
+        white-space: nowrap;       
+      }
+
+      .score {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1;
+        padding: 0px 5px;
+        background: rgb(240, 240, 240);
+        text-align: right;
+        border-top: solid 1px #999;
+        
+      }
+    }
+  }
+
+  .round.activeMinus1 {
+    .game-container {
+      height: @unit * 3;
+      font-size: 0px;
+    }
+
+    .game {
+      height: @unit * 2;
+    }
+
+    .player {
+      width: 50%;
+      display: inline-block;
+      font-size: 16px;
+
+      &:last-child {
+        text-align: right;
+      }
+    }
+  }
+
+  .round.activePlus1 {
+    .game-container {
+      height: @unit * 12;
+    }
+  }
+
+  .round.activePlus2 {
+    .game-container {
+      height: @unit * 24;
+    }
+  }
+
+  .round.activePlus3 {
+    .game-container {
+      height: @unit * 48;
+    }
+  }
+
+  .champion {
+    display: none;
+  }
+
+}

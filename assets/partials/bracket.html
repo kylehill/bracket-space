@@ -2,24 +2,83 @@
 
   <div class="tournament-title" ng-bind="data.title"></div> 
 
+  <div class="result-entry"
+    ng-class="{ show: showResult }">
+
+    <div class="game-title">
+      <span class="round-title" ng-bind="roundTitle()"></span> - 
+      <span class="game-id" ng-bind="gameTitle()"></span>
+    </div>
+
+    <div class="result-player"> 
+      <div class="indicator"
+        ng-class="{ winner: inputGame.home_score > inputGame.away_score }"
+      ></div>
+      <div class="name">{{ participants[activeGame.home] }}</div>
+      <div class="score">
+        <input type="number" class="score-input" ng-model="inputGame.home_score" />
+      </div>
+    </div>
+    
+    <div class="result-player"> 
+      <div class="indicator"
+        ng-class="{ winner: inputGame.home_score < inputGame.away_score }"
+      ></div>
+      <div class="name">{{ participants[activeGame.away] }}</div>
+      <div class="score">
+        <input type="number" class="score-input" ng-model="inputGame.away_score" />
+      </div>
+    </div>
+
+    <div class="save-button">
+      <button ng-click="saveResult()">Save Result</button>
+    </div>
+
+  </div>
+
   <div class="phase" ng-repeat="phase in data.phases">
     <div class="phase-title" ng-bind="phase.title"></div>
     
-    <div class="bracket" ng-class="'rounds' + (phase.rounds.length)" ng-show="phase.config.type === 'bracket'">
-      <div class="round" ng-class="'round' + round.round" ng-repeat="round in phase.rounds">
+    <div class="bracket-advanced" ng-class="'rounds' + (phase.rounds.length)" ng-show="phase.config.type === 'bracket'">
+      <div class="round" 
+        ng-class="[
+          'round' + round.round,
+          roundMap[round.round]
+        ]" 
+        ng-repeat="round in phase.rounds">
         
-        <div ng-repeat="game in round.games">
+        <div ng-repeat="game in round.games" 
+            class="game-container"
+            ng-click="clickGame(phase, game)">
           <div class="blank" ng-if="game.bye"></div>
           <div ng-if="!game.bye" class="game" data-game="{{ 'Game' + game.id }}">
             <div class="player" 
-              ng-class="{ winner: game.result === 'home' }"
-              ng-click="clickPlayer(game, 'home')">
-              {{ participants[game.home] }}
+              ng-class="{ 
+                winner: game.result === 'home',
+                empty: !game.home
+              }"
+              ng-click="clickPlayer(phase, game, 'home')">
+              <div class="seed">{{ game.home }}</div>
+              <div class="name">
+                {{ participants[game.home] }}
+                <div class="score" ng-show="game.home_score">
+                  {{ game.home_score }}
+                </div>
+              </div>
             </div>
             <div class="player"
-              ng-class="{ winner: game.result === 'away' }"
-              ng-click="clickPlayer(game, 'away')">
-              {{ participants[game.away] }}
+              ng-class="{ 
+                winner: game.result === 'away',
+                empty: !game.away
+              }"
+              ng-click="clickPlayer(phase, game, 'away')">
+              <div class="seed">{{ game.away }}</div>
+              <div class="name">
+                {{ participants[game.away] }}
+                <div class="score" ng-show="game.away_score">
+                  {{ game.away_score }}
+                </div>
+              </div>
             </div>
           </div>
         </div>

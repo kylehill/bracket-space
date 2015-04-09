@@ -13,7 +13,7 @@ module.exports = {
   result: function(tournament, options) {
     var phase = tournament.phases[0]
 
-    tournament.phases[0] = this.private.setResult(phase, parseInt(options.match), options.result, options.home, options.away)
+    tournament.phases[0] = this.private.setResult(phase, parseInt(options.match), options.result, options.home_score, options.away_score)
 
     return tournament
   },
@@ -166,7 +166,9 @@ module.exports = {
         phases: [
           this.createPhase(options)
         ],
-        config: {}
+        config: {
+          track_score: options.track_score
+        }
       }
     },
 
